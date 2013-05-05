@@ -1,3 +1,4 @@
+// pass in your gmail address and password at command line.
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
