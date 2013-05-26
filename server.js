@@ -29,7 +29,6 @@ var mailOptions = function(targetAddress) {
 	};
 };
 
-// * TODO *: Modularise this into utils/helper file and export to this file.
 var serveFile = function(request, response, path) {
   fs.readFile(path, function(err, data) {
     if (err) {
@@ -48,10 +47,12 @@ app.get('/index.js', function(request, response) {
   serveFile(request, response, 'index.js');
 });
 
+app.get('/style.css', function(request, response) {
+  serveFile(request, response, 'style.css');
+});
+
 app.post('/emails', function(request, response) {
   // Send email out to target.
-  // * TODO *: Add to database collection and check the target against the database.
-  // * TODO *: Modularise all emailing code and export to this file.
 	transport.sendMail(mailOptions(request.body.email), function(error, response) {
     if (error) {
         console.log(error);
